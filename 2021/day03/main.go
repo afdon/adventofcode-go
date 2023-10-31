@@ -37,11 +37,14 @@ func gamma(lines []string) []byte {
 		zeroes := 0
 
 		for j := 0; j < len(lines); j++ {
-			if lines[j] == "0" {
+			fmt.Print(lines[j])
+			if string(lines[j][i]) == "0" {
 				zeroes++
+				// fmt.Print(zeroes)
 			}
-			if lines[j] == "1" {
+			if string(lines[j][i]) == "1" {
 				ones++
+				// fmt.Print(ones)
 			}
 		}
 
@@ -67,10 +70,10 @@ func epsilon(lines []string) []byte {
 		zeroes := 0
 
 		for j := 0; j < len(lines); j++ {
-			if lines[j] == "0" {
+			if string(lines[j][i]) == "0" {
 				zeroes++
 			}
-			if lines[j] == "1" {
+			if string(lines[j][i]) == "1" {
 				ones++
 			}
 		}
