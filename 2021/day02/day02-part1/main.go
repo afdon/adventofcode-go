@@ -14,7 +14,6 @@ func main() {
 
 	depth := 0
 	position := 0
-	aim := 0
 
 	lines := strings.Split(strings.TrimSpace(input), "\n")
 
@@ -39,13 +38,12 @@ func main() {
 
 		if command == "forward" {
 			position += steps
-			depth += aim * steps
 		}
 		if command == "up" {
-			aim -= steps
+			depth -= steps
 		}
 		if command == "down" {
-			aim += steps
+			depth += steps
 		}
 
 		fmt.Printf("Position: %d, Depth: %d\n", position, depth)
