@@ -15,56 +15,41 @@ func main() {
 
 	lines := strings.Split(strings.TrimSpace(input), "\n")
 
+	// var current [3]int
+	// var next [3]int
+
 	var count int = 0
 
-	for i := 0; i < len(lines); i++ {
+	for i := 0; i < len(lines)-3; i++ {
 
-		if i == 0 {
-			continue
+		var one int = 0
+		var two int = 0
+
+		first, _ := strconv.Atoi(lines[i])
+		second, _ := strconv.Atoi(lines[i+1])
+		third, _ := strconv.Atoi(lines[i+2])
+		fourth, _ := strconv.Atoi(lines[i+3])
+
+		one = first + second + third
+		two = second + third + fourth
+
+		if two > one {
+			count++
 		}
 
-		curLine, _ := strconv.Atoi(lines[i])
-		prevLine, _ := strconv.Atoi(lines[i-1])
+		////
 
-		if i > 0 && curLine > prevLine {
-			count = count + 1
-			fmt.Println("count increased to:", count)
-		}
+		// 	curLine, _ := strconv.Atoi(lines[i])
+		// 	prevLine, _ := strconv.Atoi(lines[i-1])
+
+		// 	if i > 0 && curLine > prevLine {
+		// 		count = count + 1
+		// 		fmt.Println("count increased to:", count)
+		// 	}
+		// }
+
+		fmt.Print(`count is `, count)
+
 	}
 
-	fmt.Print(`count is `, count)
-
 }
-
-//////
-
-// func main_old() {
-// 	lines := strings.Split(strings.TrimSpace(input), "\n")
-
-// 	var count int = 0
-
-// 	for i := 0; i < len(lines); i++ {
-// 		if i > 0 && lines[i] > lines[i-1] {
-// 			count++
-// 			fmt.Println("count increased to:", count)
-// 		}
-// 	}
-
-// 	fmt.Print("count is", count)
-
-// for i, line := range lines {
-// 	fmt.Println(i, line)
-
-// 	// skip first run
-// 	// if i == 0 {
-// 	// 	continue
-// 	// }
-
-// 	if i > 0 && lines[i] > lines[i-1] {
-// 		count++
-// 		fmt.Print("count increased to:", count)
-// 	}
-// }
-
-// fmt.Print("number of times depth has increased:", count)
-// }
