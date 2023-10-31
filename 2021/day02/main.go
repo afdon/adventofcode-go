@@ -11,6 +11,10 @@ import (
 var input string
 
 func main() {
+
+	depth := 0
+	position := 0
+
 	lines := strings.Split(strings.TrimSpace(input), "\n")
 
 	for i := 0; i < len(lines); i++ {
@@ -31,5 +35,17 @@ func main() {
 		}
 
 		fmt.Printf("Command: %s, Steps: %d\n", command, steps)
+
+		if command == "forward" {
+			position += steps
+		}
+		if command == "up" {
+			depth -= steps
+		}
+		if command == "down" {
+			depth += steps
+		}
+
+		fmt.Printf("Position: %d, Depth: %d\n", position, depth)
 	}
 }
