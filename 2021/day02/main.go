@@ -3,6 +3,7 @@ package main
 import (
 	_ "embed"
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -10,39 +11,25 @@ import (
 var input string
 
 func main() {
-	// fmt.Println(input)
-
 	lines := strings.Split(strings.TrimSpace(input), "\n")
 
 	for i := 0; i < len(lines); i++ {
-		fmt.Println(strings.Split(lines[i], " "))
-		instruction := strings.Split(lines[i], " ")
-		dir := instruction[0]
-		steps := instruction[1]
+		parts := strings.Split(lines[i], " ")
 
-		fmt.Print(dir)
+		if len(parts) != 2 {
+			fmt.Printf("Invalid input on line %d: %s\n", i+1, lines[i])
+			continue
+		}
 
-		// raw := strings.Split(lines[i], " ")
+		command := parts[0]
+		stepsStr := parts[1]
 
-		// fmt.Println(raw)
+		steps, err := strconv.Atoi(stepsStr)
+		if err != nil {
+			fmt.Printf("Invalid steps on line %d: %s\n", i+1, stepsStr)
+			continue
+		}
 
-		// l, _ := strconv.Atoi(lines[i])
-
-		// line := lines[i]
-		// lineLength := len(line)
-		// lastIndex := line[lineLength-1]
-
-		// fmt.Println(line, lineLength, lastIndex)
-
-		// d := lines[i][lastIndex]
-
-		// var s byte = lines[i][0]
-		// steps := strings.LastIndexByte(lines[i], 0)
-
-		// fmt.Print(steps)
-
-		// fmt.Println(d, s)
-
+		fmt.Printf("Command: %s, Steps: %d\n", command, steps)
 	}
-
 }
