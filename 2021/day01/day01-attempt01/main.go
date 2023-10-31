@@ -15,9 +15,6 @@ func main() {
 
 	lines := strings.Split(strings.TrimSpace(input), "\n")
 
-	// var current [3]int
-	// var next [3]int
-
 	var count int = 0
 
 	for i := 0; i < len(lines)-3; i++ {
@@ -36,17 +33,6 @@ func main() {
 		if two > one {
 			count++
 		}
-
-		////
-
-		// 	curLine, _ := strconv.Atoi(lines[i])
-		// 	prevLine, _ := strconv.Atoi(lines[i-1])
-
-		// 	if i > 0 && curLine > prevLine {
-		// 		count = count + 1
-		// 		fmt.Println("count increased to:", count)
-		// 	}
-		// }
 
 		fmt.Print(`count is `, count)
 
