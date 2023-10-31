@@ -48,4 +48,6 @@ func main() {
 
 		fmt.Printf("Position: %d, Depth: %d\n", position, depth)
 	}
+
+	fmt.Print(position * depth)
 }
