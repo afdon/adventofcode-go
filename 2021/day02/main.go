@@ -3,10 +3,11 @@ package main
 import (
 	_ "embed"
 	"fmt"
+	"strconv"
 	"strings"
 )
 
-// go:embed input.txt
+//go:embed input.txt
 var input string
 
 func main() {
@@ -14,11 +15,14 @@ func main() {
 
 	lines := strings.Split(strings.TrimSpace(input), "\n")
 
-	var count int = 0
+	for i := 0; i < len(lines); i++ {
 
-	for i := 0; i < len(lines)-3; i++ {
+		l, _ := strconv.Atoi(lines[i])
 
-		fmt.Print(`count is `, count)
+		d := lines[i][len(lines[i])-1]
+		s := lines[i][0]
+
+		fmt.Println(l, d, s)
 
 	}
 
