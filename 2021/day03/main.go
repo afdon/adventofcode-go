@@ -3,6 +3,7 @@ package main
 import (
 	_ "embed"
 	"fmt"
+	"math"
 	"strconv"
 	"strings"
 )
@@ -19,7 +20,7 @@ func main() {
 	gammaInt, _ := strconv.Atoi(string(gamma))
 	epsilonInt, _ := strconv.Atoi(string(epsilon))
 
-	power := gammaInt * epsilonInt
+	power := binaryToDecimal(gammaInt) * binaryToDecimal(epsilonInt)
 
 	fmt.Println(gammaInt, epsilonInt, power)
 }
@@ -69,13 +70,26 @@ func epsilon(lines []string) []byte {
 		}
 
 		if zeroes > ones {
-			epsilon[i] = '0'
+			epsilon[i] = '1'
 		}
 		if ones > zeroes {
-			epsilon[i] = '1'
+			epsilon[i] = '0'
 		}
 	}
 
 	fmt.Println(string(epsilon))
 	return epsilon
+}
+
+func binaryToDecimal(num int) int {
+	var remainder int
+	index := 0
+	decimalNum := 0
+	for num != 0 {
+		remainder = num % 10
+		num = num / 10
+		decimalNum = decimalNum + remainder*int(math.Pow(2, float64(index)))
+		index++
+	}
+	return decimalNum
 }
