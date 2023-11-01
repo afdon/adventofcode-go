@@ -4,6 +4,7 @@ import (
 	_ "embed"
 	"fmt"
 	"math"
+	"strconv"
 	"strings"
 )
 
@@ -28,10 +29,26 @@ func main() {
 	// power := binaryToDecimal(oxygenInt) * binaryToDecimal(co2Int)
 
 	// fmt.Println(oxygenInt, co2Int, power)
+
+	tally := tally(lines)
+
+	oxygen := oxygen(lines, tally)
+
+	tallyCo2 := tallyco2(lines)
+
+	co2 := co2(lines, tallyCo2)
+
+	oxygenInt, _ := strconv.Atoi(oxygen)
+	co2Int, _ := strconv.Atoi(co2)
+
+	result := oxygenInt * co2Int
+
+	fmt.Println(result)
+
 }
 
-func tally(lines []string) []int {
-	tally := make([]int, len(lines[0]))
+func tally(lines []string) []byte {
+	tally := make([]byte, len(lines[0]))
 
 	for i := 0; i < len(lines[0]); i++ {
 		ones := 0
@@ -59,8 +76,8 @@ func tally(lines []string) []int {
 	return tally
 }
 
-func tallyco2(lines []string) []int {
-	tally := make([]int, len(lines[0]))
+func tallyco2(lines []string) []byte {
+	tally := make([]byte, len(lines[0]))
 
 	for i := 0; i < len(lines[0]); i++ {
 		ones := 0
