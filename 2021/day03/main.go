@@ -4,7 +4,6 @@ import (
 	_ "embed"
 	"fmt"
 	"math"
-	"strconv"
 	"strings"
 )
 
@@ -38,17 +37,17 @@ func main() {
 
 	co2 := co2(lines, tallyCo2)
 
-	oxygenInt, _ := strconv.Atoi(oxygen)
-	co2Int, _ := strconv.Atoi(co2)
+	// oxygenInt, _ := strconv.Atoi(oxygen)
+	// co2Int, _ := strconv.Atoi(co2)
 
-	result := oxygenInt * co2Int
+	result := oxygen * co2
 
 	fmt.Println(result)
 
 }
 
-func tally(lines []string) []byte {
-	tally := make([]byte, len(lines[0]))
+func tally(lines []string) []int {
+	tally := make([]int, len(lines[0]))
 
 	for i := 0; i < len(lines[0]); i++ {
 		ones := 0
@@ -65,10 +64,10 @@ func tally(lines []string) []byte {
 
 		if zeroes > ones {
 			// keep all the elements with zeroes
-			tally[i] = '0'
+			tally[i] = 0
 		} else {
 			// keep all the elements with ones
-			tally[i] = '1'
+			tally[i] = 1
 		}
 	}
 
@@ -76,8 +75,8 @@ func tally(lines []string) []byte {
 	return tally
 }
 
-func tallyco2(lines []string) []byte {
-	tally := make([]byte, len(lines[0]))
+func tallyco2(lines []string) []int {
+	tally := make([]int, len(lines[0]))
 
 	for i := 0; i < len(lines[0]); i++ {
 		ones := 0
@@ -93,9 +92,9 @@ func tallyco2(lines []string) []byte {
 		}
 
 		if zeroes > ones {
-			tally[i] = '1'
+			tally[i] = 1
 		} else {
-			tally[i] = '0'
+			tally[i] = 0
 		}
 	}
 
@@ -103,9 +102,9 @@ func tallyco2(lines []string) []byte {
 	return tally
 }
 
-func oxygen(lines []string, tally []byte) []byte {
+func oxygen(lines []string, tally []int) []int {
 
-	oxygen := make([]byte, len(lines[0]))
+	oxygen := make([]int, len(lines[0]))
 
 	filteredLines := lines
 
@@ -125,9 +124,9 @@ func oxygen(lines []string, tally []byte) []byte {
 	return oxygen
 }
 
-func co2(lines []string, tally []byte) []byte {
+func co2(lines []string, tally []int) []int {
 
-	co2 := make([]byte, len(lines[0]))
+	co2 := make([]int, len(lines[0]))
 
 	filteredLines := lines
 
